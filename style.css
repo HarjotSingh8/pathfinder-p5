@@ -1,0 +1,26 @@
+.menubtn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+  color: white;
+  background-color: rgba(20, 20, 50, 0.8);
+  padding: 0px;
+  border-color: rgba(20, 20, 50, 0.8);
+}
+.menu {
+  position: absolute;
+  top: 22px;
+  left: 5px;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+#defaultCanvas0 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}

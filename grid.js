@@ -1,13 +1,19 @@
+let pathcolor;
+let wallcolor;
+let routecolor;
+let sourcecolor;
+let destinationcolor;
+let visitedcolor;
 class Grid {
   /*
    * This class contains grid data
    */
   constructor(rows, cols) {
     this.grid = [];
-    for (let i = 0; i < rows; i++) {
-      this.grid[i] = [];
-      for (let j = 0; j < cols; j++) {
-        this.grid[i][j] = new Node(i, j);
+    for (let j = 0; j < rows; j++) {
+      this.grid[j] = [];
+      for (let i = 0; i < cols; i++) {
+        this.grid[j][i] = new Node(i, j);
       }
     }
   }
@@ -23,16 +29,22 @@ class Grid {
         "," +
         floor((mouseY / windowHeight) * rows)
     );
-    return this.grid[floor((mouseX / windowWidth) * cols)][
-      floor((mouseY / windowHeight) * rows)
-    ];
+    if (
+      mouseX > 0 &&
+      mouseX < windowWidth &&
+      mouseY > 0 &&
+      mouseY < windowWidth
+    )
+      return this.grid[floor((mouseY / windowHeight) * rows)][
+        floor((mouseX / windowWidth) * cols)
+      ];
     return false;
   }
   draw() {
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         this.grid[i][j].draw();
-        console.log("drawing");
+        //console.log("drawing");
       }
     }
   }
@@ -43,14 +55,34 @@ class Node {
    * This class is used for boxes in the grid
    */
   constructor(i, j) {
-    this.xpos = (windowWidth / cols) * j;
-    this.ypos = (windowHeight / rows) * i;
+    this.x = i;
+    this.y = j;
+    this.xpos = (windowWidth / cols) * i;
+    this.ypos = (windowHeight / rows) * j;
     this.path = true;
-    if (i == 0) this.path = false;
+    this.source = false;
+    this.destination = false;
+    this.distance = Infinity;
+    this.prevNode = null;
+    this.visited = false;
   }
   draw() {
-    if (this.path) fill(255, 255, 255);
-    else fill(50, 50, 50);
+    if (this.source) fill(255, 0, 0);
+    //color for source
+    else if (this.destination) fill(0, 255, 0);
+    //color for destination
+    else if (this.visited) fill(200, 200, 200);
+    else if (this.path) fill(255, 255, 255);
+    //color for path
+    else fill(50, 50, 50); //color for wall
+    rect(this.xpos, this.ypos, 20, 20);
+  }
+  drawroute() {
+    fill(0, 200, 0);
+    rect(this.xpos, this.ypos, 20, 20);
+  }
+  drawpath() {
+    fill(200, 200, 200);
     rect(this.xpos, this.ypos, 20, 20);
   }
 }
