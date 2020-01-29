@@ -25,5 +25,7 @@ function draw() {
   //background(50);
 
   if (solvingDijsktra) solveDijsktra();
-  if (solved) noLoop();
+  //if (solved) noLoop();
+  if (visualise) visualisePath();
+  console.log("running");
 }

@@ -1,9 +1,10 @@
 let solved = false;
 let solvingDijsktra = false;
-let showpath = false;
+let showpath = false; //false
 let unvisited = [];
-let currentonPath;
+let currentonPathAnimation;
 let prevdist = 0;
+let visualise = false;
 function startDijsktra() {
   if (solvingDijsktra) {
     console.log("already solving");
@@ -73,14 +74,29 @@ function startpath() {
   if (showpath && showpath != destination) {
     clearpath();
   }
+  if (showpath == false) {
+    currentonPathAnimation = destination.prev;
+    showpath = destination;
+    visualise = true;
+    return;
+  }
   if (destination.path) {
-    current = destination.prev;
-    while (current != source) {
-      current.drawroute();
-      current = current.prev;
+    currentonPathAnimation = destination.prev;
+    while (currentonPathAnimation != source) {
+      currentonPathAnimation.drawroute();
+      currentonPathAnimation = currentonPathAnimation.prev;
     }
     showpath = destination;
   }
+}
+function visualisePath() {
+  if (currentonPathAnimation == source) {
+    console.log("stopped");
+    visualise = false;
+    return;
+  }
+  currentonPathAnimation.drawroute();
+  currentonPathAnimation = currentonPathAnimation.prev;
 }
 
 function clearpath() {
