@@ -75,14 +75,14 @@ class Node {
     else if (this.path) fill(255, 255, 255);
     //color for path
     else fill(50, 50, 50); //color for wall
-    rect(this.xpos, this.ypos, 20, 20);
+    rect(this.xpos, this.ypos, gridSize, gridSize);
   }
   drawroute() {
     fill(0, 200, 0);
-    rect(this.xpos, this.ypos, 20, 20);
+    rect(this.xpos, this.ypos, gridSize, gridSize);
   }
   drawpath() {
     fill(200, 200, 200);
-    rect(this.xpos, this.ypos, 20, 20);
+    rect(this.xpos, this.ypos, gridSize, gridSize);
   }
 }

@@ -4,11 +4,13 @@ let walls;
 let grid;
 let source = null;
 let destination = null;
+
+let gridSize = 10;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(120);
-  rows = floor(windowHeight / 20);
-  cols = floor(windowWidth / 20);
+  rows = floor(windowHeight / gridSize);
+  cols = floor(windowWidth / gridSize);
   grid = new Grid(rows, cols);
   pathcolor = color(150, 150, 150);
   wallcolor = color(0, 0, 0);
