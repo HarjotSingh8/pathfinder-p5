@@ -5,7 +5,7 @@ let grid;
 let source = null;
 let destination = null;
 
-let gridSize = 10;
+let gridSize = 20;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(120);
@@ -23,7 +23,6 @@ function setup() {
 
 function draw() {
   //background(50);
-
   if (solvingDijsktra) solveDijsktra();
   //if (solved) noLoop();
   if (visualise) visualisePath();
