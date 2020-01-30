@@ -35,7 +35,7 @@ function solveDijsktra() {
       unvisited.push(neighbors[x]);
       neighbors[x].distance = unvisited[0].distance + 1;
       neighbors[x].prev = unvisited[0];
-      neighbors[x].visited = true;
+      neighbors[x].visitedFromSource = true;
     }
     unvisited[0].draw();
     unvisited.shift();
@@ -47,25 +47,25 @@ function getUnvisitedNeighbors(col, row) {
   if (
     row + 1 < rows &&
     grid.grid[row + 1][col].path &&
-    grid.grid[row + 1][col].visited == false
+    grid.grid[row + 1][col].visitedFromSource == false
   )
     neighbors.push(grid.grid[row + 1][col]);
   if (
     col + 1 < cols &&
     grid.grid[row][col + 1].path &&
-    grid.grid[row][col + 1].visited == false
+    grid.grid[row][col + 1].visitedFromSource == false
   )
     neighbors.push(grid.grid[row][col + 1]);
   if (
     row - 1 >= 0 &&
     grid.grid[row - 1][col].path &&
-    grid.grid[row - 1][col].visited == false
+    grid.grid[row - 1][col].visitedFromSource == false
   )
     neighbors.push(grid.grid[row - 1][col]);
   if (
     col - 1 >= 0 &&
     grid.grid[row][col - 1].path &&
-    grid.grid[row][col - 1].visited == false
+    grid.grid[row][col - 1].visitedFromSource == false
   )
     neighbors.push(grid.grid[row][col - 1]);
   return neighbors;

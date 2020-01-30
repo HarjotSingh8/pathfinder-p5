@@ -50,7 +50,7 @@ function mouseDragged() {
       if (
         movingDestination &&
         box != destination &&
-        box.visited &&
+        box.visitedFromSource &&
         box != source
       ) {
         console.log("moving");

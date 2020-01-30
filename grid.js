@@ -63,15 +63,18 @@ class Node {
     this.source = false;
     this.destination = false;
     this.distance = Infinity;
-    this.prevNode = null;
-    this.visited = false;
+    this.prevNodeFromSource = null;
+    this.prevNodeFromDestination = null;
+    this.visitedFromSource = false;
+    this.visitedFromDestination = false;
   }
   draw() {
     if (this.source) fill(255, 0, 0);
     //color for source
     else if (this.destination) fill(0, 255, 0);
     //color for destination
-    else if (this.visited) fill(200, 200, 200);
+    else if (this.visitedFromSource || this.visitedFromDestination)
+      fill(200, 200, 200);
     else if (this.path) fill(255, 255, 255);
     //color for path
     else fill(50, 50, 50); //color for wall
